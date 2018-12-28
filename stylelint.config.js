@@ -1,5 +1,5 @@
-﻿const allowedPrimitiveTags = ["h[1-6]", "ul", "li", "a", "p", "label", "input", "textarea", "select", "option", "button", "fieldset"].map(t=>new RegExp(`^${t}$`));
-const allowedThirdPartyClassPrefix = ["ui-", "sa-", "fa-"].map(p=> new RegExp(`^\\.${p}.+`));
+﻿const allowedTags = ["h[1-6]", "ul", "li", "a"].join("|")
+const allowedThirdPartyClasses = ["ui-", "sa-", "fa-"].map(p=> `\\.${p}[\w_-]+`).join("|")
 const optionalAttributeSelector ="(\\[.+)?"
 
 module.exports = {
@@ -8,14 +8,12 @@ module.exports = {
     ],
     "rules": {
         "plugin/selector-bem-pattern": {
-            "componentName": "^[A-Za-z]+",
-            "componentSelectors": {
-                "initial": `^\\.{componentName}(?:__.+|--.+|\\[.+)?$`,
-                "combined": `^(\\.{componentName}(?:__.+|--.+)?)${optionalAttributeSelector}$`
-            },
-            // implicitComponents: ['**/module*.scss'],
-            "utilitySelectors": "^\\.util-[a-z]+$",
-            "ignoreSelectors": allowedPrimitiveTags.concat(allowedThirdPartyClassPrefix)
+            componentName: "^[A-Za-z-]+$",
+            componentSelectors: {
+                initial: `^\\.{componentName}(?:(__|--)\\w[\\w-_]*)?$`,
+                // "combined": `^(\\.{componentName}(?:(__|--)\\w[\\w-_]*)?|${allowedTags}|${allowedThirdPartyClasses})${optionalAttributeSelector}$`,
+                combined: `^(${allowedTags}|${allowedThirdPartyClasses})${optionalAttributeSelector}$`
+            }
         }
     }
 }
