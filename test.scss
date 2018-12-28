@@ -1,0 +1,35 @@
+/** @define top-bar */
+
+.top-bar {
+    height: 30px;
+    line-height: 30px;
+    font-size: $font-size-primary;
+    background-color: $color-background-tablehead;
+    font-family: $font-family-simsun;
+    a {
+        color: $color-text-primary;
+    }
+} 
+
+/** @define notification */
+
+.notification {
+    float: left;
+    .notification__board {
+        position: absolute;
+        .notification__view-all {
+            float: left;
+            width: 100%;
+            height: auto;
+            line-height: initial;
+            padding: 15px 20px;
+            a {
+                float: right;
+                color: $color-link-primary;
+            }
+            .notification__ignore-all {
+                float: left;
+            }
+        }
+    }
+}

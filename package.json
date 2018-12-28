@@ -1,0 +1,23 @@
+{
+  "name": "fht-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stylelint.config.js",
+  "scripts": {
+    "stylelint": "node ./node_modules/stylelint/bin/stylelint.js --quiet --config ./stylelint.config.js --formatter  verbose ./test.scss"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.9.3",
+    "sass": "^1.10.4",
+    "stylelint": "^8.3.1",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-scss": "^2.2.0"
+  },
+  "devDependencies": {
+    "postcss-bem-linter": "^3.1.0",
+    "stylelint-selector-bem-pattern": "^2.0.0"
+  }
+}
